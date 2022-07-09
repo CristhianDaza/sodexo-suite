@@ -1,16 +1,19 @@
 <template>
   <div class="divider">
-    <hr>
+    <hr :class="{ 'fullHeight' : isFull }">
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({
   name: 'Ss-Divider',
 })
-export default class SsDivider extends Vue {}
+export default class SsDivider extends Vue {
+  @Prop({ type: Boolean, default: false })
+  private isFull!: boolean;
+}
 </script>
 
 <style lang="scss" scoped>
@@ -23,6 +26,10 @@ export default class SsDivider extends Vue {}
     width: 1px;
     border-width:0;
     background-color: $gray-color;
+
+    &.fullHeight {
+      height: 100%;
+    }
   }
 }
 

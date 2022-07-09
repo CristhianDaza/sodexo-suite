@@ -22,7 +22,7 @@ export default class LateralMenu extends Vue {}
 .lateralMenu {
   background-color: #363A3E;
   display: inline-flex;
-  width: 63px;
+  width: 65px;
   margin-top: -1px;
   height:  calc(100vh - 65px) ;
   flex-direction: column;
@@ -36,9 +36,10 @@ export default class LateralMenu extends Vue {}
 
   & .user {
     bottom: 0;
+    left: 0;
     background: #2B2E32;
     position: absolute;
-    width: 63px;
+    width: 61px;
     display: flex;
     justify-content: center;
   }

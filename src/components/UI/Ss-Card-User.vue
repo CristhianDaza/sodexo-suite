@@ -34,12 +34,13 @@ export default class HomeView extends Vue {
   display: flex;
   padding: 8px 5px;
   border-radius: 10px;
-  margin: 5px;
-  max-width: 250px;
+  margin: 2px 0;
+  min-width: 250px;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
   border: 3px solid white;
+  transition: all .2s linear;
 
   &-detail {
     margin-left: 18px;
@@ -48,13 +49,17 @@ export default class HomeView extends Vue {
   &.isActive {
     border: 3px solid $primary-color;
 
-    & .card-avatar{
+    & .avatar{
       background: $primary-color;
     }
 
-    & .card-detail-name {
+    & .name {
       color: $primary-color;
     }
+  }
+
+  &:hover {
+    border: 3px solid $primary-color;
   }
 }
 </style>

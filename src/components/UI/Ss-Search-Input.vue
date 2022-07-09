@@ -37,23 +37,8 @@ export default class SsSearch extends Vue {
   position: relative;
 
   & input {
-    background: $gray-color;
-    padding: 10px 5px 10px 33px;
-    border: none;
-    border-radius: 5px;
-    font-weight: 600;
-    width: 250px;
-    font-size: 12px;
-    color: black;
-    position: relative;
-
-    &::placeholder {
-      color: black;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $primary-color;
-    }
+    padding-left: 33px;
+    margin-bottom: 20px;
   }
 }
 
