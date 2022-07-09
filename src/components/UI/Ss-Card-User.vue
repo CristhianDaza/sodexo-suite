@@ -1,6 +1,6 @@
 <template>
   <div class="card" :class="{ 'isActive' : isActive }" >
-    <div class="card-avatar">
+    <div class="avatar">
     </div>
     <div class="card-detail">
       <div class="info">
@@ -40,14 +40,6 @@ export default class HomeView extends Vue {
   align-items: center;
   cursor: pointer;
   border: 3px solid white;
-
-  &-avatar {
-    width: 40px;
-    height: 40px;
-    background: $gray-color;
-    border-radius: 50%;
-    margin-left: 8px;
-  }
 
   &-detail {
     margin-left: 18px;

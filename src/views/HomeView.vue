@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Sodexo Suite</h1>
   </div>
 </template>
 
