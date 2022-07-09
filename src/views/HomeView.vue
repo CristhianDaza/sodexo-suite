@@ -7,6 +7,9 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
-export default class HomeView extends Vue {}
+@Component({
+  components: {},
+})
+export default class HomeView extends Vue {
+}
 </script>

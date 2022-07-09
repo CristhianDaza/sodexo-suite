@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+.info {
+  font-size: 12px;
+  opacity: 70%;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.icon {
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.icon-add {
+  background-image: url('../img/icons/icon-plus.svg');
+}
+
+.icon-remove {
+  background-image: url('../img/icons/icon-remove.png');
+}
+
+.icon-search {
+  background-image: url('../img/icons/icon-search.svg');
+}
