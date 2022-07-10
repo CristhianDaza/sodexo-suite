@@ -23,7 +23,6 @@ import { Component, Emit, Vue } from 'vue-property-decorator';
 
 export default class SsSearch extends Vue {
   @Emit('search-item')
-  // eslint-disable-next-line class-methods-use-this
   private searchItem(e: { target: { value: string } }): string {
     return e.target.value;
   }

@@ -1,24 +1,23 @@
 <template>
   <div class="banner_user">
-    <ss-search />
-    <ss-card-user is-active>
+    <ss-search @search-item="searchUser" />
+    <ss-card-user
+      v-for="user in getUsers"
+      :key="user.id"
+      @set-action="selectUser(user)"
+      :is-active="user.isActive"
+    >
       <template v-slot:info>Beneficiario</template>
-      <template v-slot:name>Cristhian Daza</template>
-    </ss-card-user>
-    <ss-card-user>
-      <template v-slot:info>Beneficiario</template>
-      <template v-slot:name>Luis Miranda Mejia</template>
-    </ss-card-user>
-    <ss-card-user>
-      <template v-slot:info>Beneficiario</template>
-      <template v-slot:name>Karen Olvera Mendoza</template>
+      <template v-slot:name>{{ user.name }}</template>
     </ss-card-user>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import { SsSearch, SsCardUser } from '@/components/UI';
+import { mapActions, mapGetters } from 'vuex';
+import { user } from '@/typings/TypeUser.d';
 
 @Component({
   name: 'BannerUser',
@@ -26,8 +25,47 @@ import { SsSearch, SsCardUser } from '@/components/UI';
     SsSearch,
     SsCardUser,
   },
+  computed: {
+    ...mapGetters('UserStore', {
+      filterByName: 'filterByName',
+    }),
+  },
+  methods: {
+    ...mapActions('UserStore', {
+      updateActive: 'updateActive',
+    }),
+  },
 })
-export default class BannerUser extends Vue {}
+export default class BannerUser extends Vue {
+  private search = ''
+
+  private updateActive!: any
+
+  private filterByName!: any
+
+  public get getUsers(): user[] {
+    return this.filterByName(this.search);
+  }
+
+  private selectUser(selectUser: user): void {
+    this.$router.push({ name: 'editUser', params: { id: selectUser.id } });
+  }
+
+  private searchUser(search: string): void {
+    this.search = search;
+    this.filterByName(search);
+  }
+
+  @Watch('$route.params.id', { immediate: true })
+  updateActiveUser(value: number, oldValue: number): void {
+    if (value) {
+      this.updateActive(Number(value));
+    }
+    if (oldValue) {
+      this.updateActive(Number(oldValue));
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

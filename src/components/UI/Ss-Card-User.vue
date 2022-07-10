@@ -1,5 +1,10 @@
 <template>
-  <div class="card" :class="{ 'isActive' : isActive }" >
+  <div
+    class="card"
+    :class="{ 'isActive' : isActive }"
+    @click="setAction"
+    @keypress="setAction"
+   >
     <div class="avatar">
     </div>
     <div class="card-detail">
@@ -14,7 +19,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Emit,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 
 @Component({
   name: 'SsCardUser',
@@ -23,6 +33,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class HomeView extends Vue {
   @Prop({ type: Boolean, default: false })
   private isActive!: boolean;
+
+  @Emit('set-action') setAction() : boolean {
+    return true;
+  }
 }
 </script>
 

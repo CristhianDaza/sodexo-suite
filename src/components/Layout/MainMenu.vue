@@ -7,30 +7,15 @@
           <div class="name">Beneficiarios</div>
         </div>
         <div class="main_menu-all_benefits-actions">
-          <ss-button icon="add">
+          <ss-button
+            icon="add"
+            @set-action="$router.push({ name: 'addUser' })"
+          >
             Nuevo
           </ss-button>
         </div>
         <ss-divider />
       </div>
-      <div class="main_menu-user">
-        <div class="main_menu-user-principal">
-          <div class="info">Usuario seleccionado</div>
-          <div class="name">Cristhian Daza</div>
-        </div>
-        <div class="main_menu-user-actions">
-          <ss-button>
-            Guardar
-          </ss-button>
-          <ss-button icon="remove" secondary-color>
-            Eliminar
-          </ss-button>
-        </div>
-      </div>
-    </div>
-    <div class="main_app_user">
-      <banner-user />
-      <router-view/>
     </div>
   </div>
 </template>
@@ -44,7 +29,6 @@ import { SsButton, SsDivider } from '@/components/UI';
   components: {
     SsButton,
     SsDivider,
-    BannerUser: () => import(/* webpackChunkName: "bannerUser" */ '@/components/Layout/BannerUser.vue'),
   },
 })
 export default class MainMenu extends Vue {}
@@ -54,17 +38,16 @@ export default class MainMenu extends Vue {}
 @import '@/assets/css/variables.sass';
 
 .main_menu {
-  display: flex;
+  display: inline-flex;
   align-items: flex-start;
   border-bottom: 1px solid $gray-color;
-  width: 100%;
+  width: 280px;
   height: 65px;
 
   &-all_benefits {
     display: flex;
-    padding: 0 30px;
+    padding: 0 16px;
     align-items: center;
-    width: 350px;
 
     &-text {
       margin-right: 25px;
@@ -75,29 +58,7 @@ export default class MainMenu extends Vue {}
     }
 
     &-actions {
-      margin-right: 25px;
-    }
-  }
-
-  &-user {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-
-    &-principal {
-      & .name {
-        font-size: 16px;
-      }
-    }
-
-    &-actions {
-      display: flex;
-
-      & button {
-        margin-right: 15px;
-      }
+      margin-right: 37px;
     }
   }
 }

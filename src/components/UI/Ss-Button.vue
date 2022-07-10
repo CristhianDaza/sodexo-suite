@@ -35,7 +35,6 @@ export default class SsButton extends Vue {
   @Prop({ type: String, default: '' })
   private icon!: string
 
-  // eslint-disable-next-line class-methods-use-this
   @Emit('set-action') setAction(): boolean {
     return true;
   }

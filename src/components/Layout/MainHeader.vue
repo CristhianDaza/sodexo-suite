@@ -1,6 +1,10 @@
 <template>
   <div class="main_header">
-    <div class="main_header-logo">
+    <div
+      class="main_header-logo"
+      @click="$router.push({ name: 'home' })"
+      @keypress="$router.push({ name: 'home' })"
+    >
       <img :src="require('@/assets/img/Logo.svg')" alt="Logo Principal">
     </div>
     <ss-divider />
@@ -43,6 +47,7 @@ export default class MainHeader extends Vue {}
 
   &-logo {
     padding: 12px;
+    cursor: pointer;
   }
 
   &-app_name {

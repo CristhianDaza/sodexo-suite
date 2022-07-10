@@ -6,10 +6,15 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
+  name: 'AddUser',
   components: {
     InfoUser: () => import(/* webpackChunkName: "infoUser" */ '@/components/Layout/InfoUser.vue'),
   },
 })
-export default class HomeView extends Vue {
+export default class AddUser extends Vue {
 }
 </script>
+
+<style scoped>
+
+</style>
