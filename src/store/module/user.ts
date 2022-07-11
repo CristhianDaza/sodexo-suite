@@ -17,21 +17,21 @@ export default class UserStore extends VuexModule {
       id: 41654,
       name: 'Adrian Ortiz Martinez',
       card: 45641321654,
-      balance: 4654321,
+      balance: '4.654.321.00',
       isActive: false,
     },
     {
       id: 465419849,
       name: 'Luis Miranda Mejia',
       card: 465165498,
-      balance: 1231,
+      balance: '1.231.00',
       isActive: false,
     },
     {
       id: 15649816,
       name: 'Karen Olver Mendoza',
       card: 4121654564,
-      balance: 4412,
+      balance: '4.412.00',
       isActive: false,
     },
   ]
@@ -41,6 +41,10 @@ export default class UserStore extends VuexModule {
   get filterByName() {
     // eslint-disable-next-line max-len
     return (search: string): user[] => this.users.filter(({ name }) => name.toLowerCase().indexOf(search.toLowerCase()) > -1);
+  }
+
+  get userView() {
+    return this.user;
   }
 
   @Mutation
@@ -67,6 +71,7 @@ export default class UserStore extends VuexModule {
   @Mutation
   UPDATE_ACTIVE(payload: number) {
     const id = this.users.map((e: user) => e.id).indexOf(payload);
+    if (id === -1) return;
     this.users[id].isActive = !this.users[id].isActive;
   }
 
@@ -87,7 +92,7 @@ export default class UserStore extends VuexModule {
 
   @Action
   updateUser(userUpdate: user) {
-    this.context.commit('UPDATE_USER', userUpdate);
+    this.context.commit('UPDATE_USER', { ...userUpdate });
   }
 
   @Action

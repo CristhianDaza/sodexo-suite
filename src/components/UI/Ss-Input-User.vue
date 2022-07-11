@@ -5,7 +5,7 @@
         type="text"
         id="name"
         placeholder="Ingresa tu nombre"
-        v-model="user.name"
+        v-model="getUser.name"
       />
     </label>
     <label for="card"> <span class="info">No. de tarjeta</span>
@@ -13,17 +13,22 @@
         type="number"
         id="card"
         placeholder="Ingresa el no. de tarjeta"
-        v-model="user.card"
+        v-model="getUser.card"
       />
     </label>
     <label for="balance"> <span class="info">Saldo</span>
       <input
-        type="number"
         id="balance"
         placeholder="Ingresa el Saldo"
-        v-model="user.balance"
+        v-model="getUser.balance"
       />
     </label>
+    <div v-if="errors.length > 0">
+      Error en el formulario:
+      <ul v-for="(error, i) in errors" :key="i">
+        <li>{{ error }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -35,8 +40,15 @@ import { user } from '@/typings/TypeUser.d';
   name: 'SsInputUser',
 })
 export default class SsInputUser extends Vue {
-  @Prop({ type: Object })
+  @Prop({ type: Array })
   private user!: user[]
+
+  @Prop({ type: Array })
+  private errors!: []
+
+  private get getUser(): user {
+    return this.user[0];
+  }
 }
 </script>
 

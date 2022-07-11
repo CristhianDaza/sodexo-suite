@@ -14,10 +14,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { SsWidgetConfirm } from '@/components/UI/';
 
 @Component({
   name: 'App',
   components: {
+    SsWidgetConfirm,
     MainHeader: () => import(/* webpackChunkName: "mainHeader" */ '@/components/Layout/MainHeader.vue'),
     LateralMenu: () => import(/* webpackChunkName: "lateralMenu" */ '@/components/Layout/LateralMenu.vue'),
     MainMenu: () => import(/* webpackChunkName: "mainMenu" */ '@/components/Layout/MainMenu.vue'),

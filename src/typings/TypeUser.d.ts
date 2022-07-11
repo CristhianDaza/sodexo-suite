@@ -1,7 +1,7 @@
 export interface user {
   name: string,
-  card: number,
-  balance: number,
+  card: number | null,
+  balance: number | null | string,
   id: number,
   isActive: boolean,
 }

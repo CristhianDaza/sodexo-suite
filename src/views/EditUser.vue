@@ -1,13 +1,13 @@
 <template>
   <info-user
-    :user-to-id="user[0]"
+    :user-to-id="getUserView"
     is-edit
   />
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { user } from '@/typings/TypeUser.d';
 
 @Component({
@@ -16,8 +16,8 @@ import { user } from '@/typings/TypeUser.d';
     InfoUser: () => import(/* webpackChunkName: "infoUser" */ '@/components/Layout/InfoUser.vue'),
   },
   computed: {
-    ...mapState('UserStore', {
-      user: 'user',
+    ...mapGetters('UserStore', {
+      userView: 'userView',
     }),
   },
   methods: {
@@ -31,7 +31,11 @@ export default class EditUser extends Vue {
 
   private getUser!: any
 
-  private user!: user[]
+  private userView!: user;
+
+  public get getUserView():user {
+    return this.userView;
+  }
 
   private getUserId(id: number): void {
     this.getUser(id);
@@ -41,7 +45,7 @@ export default class EditUser extends Vue {
     this.getUserId(this.idRoute);
   }
 
-  @Watch('$route.params.id', { immediate: true })
+  @Watch('$route.params.id')
   OnRouteChange(value: number): void {
     this.getUserId(value);
   }

@@ -39,7 +39,7 @@ export default class LateralMenu extends Vue {}
     left: 0;
     background: #2B2E32;
     position: absolute;
-    width: 65px;
+    width: 64px;
     display: flex;
     justify-content: center;
   }
